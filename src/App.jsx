@@ -2,8 +2,8 @@ import { Routes, Route } from "react-router-dom";
 import { Layout } from "Layout/Layout";
 import { HomePage } from "page/HomePage";
 import { ContactsPage } from "page/ContactsPage";
-import { Login } from "components/login/Login";
-import { Register } from "components/register/Register";
+import { Login } from "components/Login/Login";
+import { Register } from "components/Register/Register";
 
 export const App = () => {
   return (

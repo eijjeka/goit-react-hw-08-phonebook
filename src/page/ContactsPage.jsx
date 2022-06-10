@@ -1,3 +1,16 @@
-export const ContactsPage = () => {
-  return <h1>Contacts page</h1>;
-};
+import Container from "components/Container";
+import Form from "components/Form";
+import { List } from "components/ContactsList/ContactsList";
+import Filter from "components/Filter/FIlter";
+import styled from "styled-components";
+
+export const ContactsPage = () => (
+  <Container>
+    <Title>Phonebook &#128211;</Title>
+    <Form />
+    <Filter />
+    <List />
+  </Container>
+);
+
+const Title = styled.h1``;

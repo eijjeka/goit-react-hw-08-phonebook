@@ -19,6 +19,7 @@ export const HomePage = () => {
       typed.destroy();
     };
   }, []);
+
   return (
     <>
       <p className="home-text" ref={el}></p>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import authOperations from "redux/auth-operations";
+import authOperations from "redux/auth/auth-operations";
 
 export const Register = () => {
   const dispatch = useDispatch();

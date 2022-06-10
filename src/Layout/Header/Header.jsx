@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import authSelectors from "redux/auth-selector";
+import authSelectors from "redux/auth/auth-selector";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { NavLink, Link } from "react-router-dom";
 import { motion } from "framer-motion";

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import authOperations from "redux/auth-operations";
+import authOperations from "redux/auth/auth-operations";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
