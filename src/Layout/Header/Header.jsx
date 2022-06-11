@@ -26,9 +26,11 @@ export const Header = () => {
               <Nav.Link active as={NavLink} to="/">
                 Home
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/contacts">
-                Contacts
-              </Nav.Link>
+              {user && (
+                <Nav.Link as={NavLink} to="/contacts">
+                  Contacts
+                </Nav.Link>
+              )}
             </Nav>
             {user ? <UserMenu /> : <AuthNav />}
           </Container>

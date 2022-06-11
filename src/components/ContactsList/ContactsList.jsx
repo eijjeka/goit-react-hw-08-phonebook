@@ -31,9 +31,9 @@ export const List = () => {
       {isFetching && <TailSpin color="#427ae4" ariaLabel="loading-indicator" />}
       {data && (
         <Wrapper>
-          {contacts.map(({ id, name, phone }, index) => (
+          {contacts.map(({ id, name, number }, index) => (
             <Item key={id} index={index}>
-              {name} : {phone}
+              {name} : {number}
               <ButtonClose onClick={() => deleteContact(id)}>
                 &#10007;
               </ButtonClose>
