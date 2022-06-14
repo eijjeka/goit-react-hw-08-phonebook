@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import authSelectors from "redux/auth/auth-selector";
 import Container from "components/Container";
 import Form from "components/Form";
 import { List } from "components/ContactsList/ContactsList";
@@ -8,12 +10,13 @@ import { useGetContactsQuery } from "redux/contacts/contactsApi";
 
 const ContactsPage = () => {
   const { data, isFetching } = useGetContactsQuery();
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <MainContainer>
       <Container>
         {/* <Title>Phonebook &#128211;</Title> */}
         <Form />
-        {isFetching ? "" : data.length > 1 && <Filter />}
+        {isLoggedIn && data && (data.length > 1 ? <Filter /> : "")}
         <List />
       </Container>
     </MainContainer>
