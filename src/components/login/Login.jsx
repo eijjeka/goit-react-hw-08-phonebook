@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-export const Login = () => {
+const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -66,3 +66,5 @@ export const Login = () => {
     </motion.div>
   );
 };
+
+export default Login;

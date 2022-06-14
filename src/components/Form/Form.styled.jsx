@@ -5,39 +5,28 @@ export const FormContainer = styled.form`
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
-  width: 300px;
+  width: 400px;
   border-radius: 10px;
-  color: #fff;
-  background: linear-gradient(
-    335deg,
-    rgba(41, 30, 94, 1) 0%,
-    rgba(29, 59, 201, 1) 50%,
-    rgba(5, 196, 207, 1) 100%
-  );
+  color: #000;
+  background-color: rgba(244, 244, 246, 0.4);
+  box-shadow: 2px 2px 23px 9px rgba(0, 0, 0, 0.39);
 `;
 
 export const BtnSubmit = styled.button.attrs(() => ({
   type: "submit",
 }))`
   position: relative;
+  margin-top: 20px;
   padding: 5px 10px;
   display: inline-flex;
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  transition: color 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 29px;
-    background: rgba(2, 94, 252, 0.308);
-    border-radius: 5px;
-    transition: all 1.5s ease;
-  }
-  &:hover:before {
-    width: 100%;
+  &:hover {
+    background-color: #212529;
+    color: #fff;
   }
 `;

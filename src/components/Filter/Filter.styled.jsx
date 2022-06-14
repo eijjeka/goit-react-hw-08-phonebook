@@ -2,24 +2,22 @@ import styled from "styled-components";
 import Container from "../Container/Container";
 
 export const ContainerSearch = styled(Container)`
-  width: 300px;
+  width: 400px;
   margin: 20px 0;
   padding: 10px 0;
   border-radius: 10px;
-  color: #fff;
-  background: linear-gradient(
-    90deg,
-    rgba(41, 30, 94, 1) 0%,
-    rgba(29, 59, 201, 1) 50%,
-    rgba(5, 196, 207, 1) 100%
-  );
+  color: #000;
+  background-color: rgba(244, 244, 246, 0.4);
+  box-shadow: 2px 2px 23px 9px rgba(0, 0, 0, 0.39);
 `;
 
 export const Title = styled.h2`
-  font-size: 20px;
+  font-size: 16px;
+  text-transform: uppercase;
 `;
 
 export const Input = styled.input`
+  text-align: center;
   margin-top: 10px;
   padding: 5px;
   border: none;

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-export const HomePage = () => {
+const HomePage = () => {
   const el = useRef(null);
 
   useEffect(() => {
@@ -51,3 +51,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;

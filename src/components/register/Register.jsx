@@ -76,3 +76,5 @@ export const Register = () => {
     </motion.div>
   );
 };
+
+export default Register;

@@ -3,12 +3,11 @@ import {
   useGetContactsQuery,
   useCreateContactMutation,
 } from "redux/contacts/contactsApi";
-import { contactsApi } from "redux/contacts/contactsApi";
-import Input from "components/Input";
 import PhoneInput from "react-phone-number-input";
+import Input from "components/Input";
+import { TailSpin } from "react-loader-spinner";
 import "react-phone-number-input/style.css";
 import { FormContainer, BtnSubmit } from "./Form.styled";
-import { TailSpin } from "react-loader-spinner";
 
 const Form = () => {
   const [createContact, { isLoading }] = useCreateContactMutation();
@@ -45,12 +44,12 @@ const Form = () => {
     <FormContainer onSubmit={handleSubmit}>
       <Input
         onChange={handleInputChange}
-        title="Name"
+        title="Create contact tab"
         type="text"
         name="name"
         value={name}
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        placeholder="Enter please name"
+        placeholder="Jordan Walke"
       />
       <PhoneInput
         defaultCountry="UA"

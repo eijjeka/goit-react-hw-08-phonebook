@@ -13,6 +13,7 @@ import {
   TextList,
 } from "./ContactList.styled";
 import { TailSpin } from "react-loader-spinner";
+import Table from "react-bootstrap/Table";
 
 export const List = () => {
   const { data, isFetching } = useGetContactsQuery();
@@ -30,17 +31,30 @@ export const List = () => {
       <Title>Contacts</Title>
       {isFetching && <TailSpin color="#427ae4" ariaLabel="loading-indicator" />}
       {data && (
-        <Wrapper>
-          {contacts.map(({ id, name, number }, index) => (
-            <Item key={id} index={index}>
-              {name} : {number}
-              <ButtonClose onClick={() => deleteContact(id)}>
-                &#10007;
-              </ButtonClose>
-            </Item>
-          ))}
-          {contacts.length === 0 && <TextList>No Contacts</TextList>}
-        </Wrapper>
+        <Table striped bordered hover variant="dark">
+          <thead>
+            <tr>
+              {/* <th>Favourites</th> */}
+              <th>Contact Name</th>
+              <th>Phone Number</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts.map(({ id, name, number }, index) => (
+              <tr key={id}>
+                {/* <td></td> */}
+                <td>{name}</td>
+                <td>{number}</td>
+                <td>
+                  <ButtonClose onClick={() => deleteContact(id)}>
+                    &#10007;
+                  </ButtonClose>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       )}
     </ContainerList>
   );

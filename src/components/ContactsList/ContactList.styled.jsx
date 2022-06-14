@@ -8,6 +8,7 @@ export const ContainerList = styled.div`
 `;
 
 export const Title = styled.h2`
+  color: #fff;
   text-align: center;
   font-size: 20px;
 `;
@@ -46,6 +47,7 @@ export const ButtonClose = styled.button.attrs(() => ({
 `;
 
 export const TextList = styled.span`
+  color: #fff;
   display: inline-block;
   margin-top: 10px;
 `;
