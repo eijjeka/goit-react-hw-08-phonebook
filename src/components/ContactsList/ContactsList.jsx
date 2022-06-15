@@ -14,6 +14,7 @@ import {
 } from "./ContactList.styled";
 import { TailSpin } from "react-loader-spinner";
 import Table from "react-bootstrap/Table";
+import { motion } from "framer-motion";
 
 export const List = () => {
   const { data, isFetching } = useGetContactsQuery();
@@ -27,35 +28,43 @@ export const List = () => {
   let contacts = nameFilter === "" ? data : FilterItems();
 
   return (
-    <ContainerList>
-      <Title>Contacts</Title>
-      {isFetching && <TailSpin color="#427ae4" ariaLabel="loading-indicator" />}
-      {data && (
-        <Table striped bordered hover variant="dark">
-          <thead>
-            <tr>
-              {/* <th>Favourites</th> */}
-              <th>Contact Name</th>
-              <th>Phone Number</th>
-              <th>Remove</th>
-            </tr>
-          </thead>
-          <tbody>
-            {contacts.map(({ id, name, number }, index) => (
-              <tr key={id}>
-                {/* <td></td> */}
-                <td>{name}</td>
-                <td>{number}</td>
-                <td>
-                  <ButtonClose onClick={() => deleteContact(id)}>
-                    &#10007;
-                  </ButtonClose>
-                </td>
+    <motion.div
+      initial={{ y: 300, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.9, delay: 0.6 }}
+    >
+      <ContainerList>
+        <Title>Contacts</Title>
+        {isFetching && (
+          <TailSpin color="#427ae4" ariaLabel="loading-indicator" />
+        )}
+        {data && (
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                {/* <th>Favourites</th> */}
+                <th>Contact Name</th>
+                <th>Phone Number</th>
+                <th>Remove</th>
               </tr>
-            ))}
-          </tbody>
-        </Table>
-      )}
-    </ContainerList>
+            </thead>
+            <tbody>
+              {contacts.map(({ id, name, number }, index) => (
+                <tr key={id}>
+                  {/* <td></td> */}
+                  <td>{name}</td>
+                  <td>{number}</td>
+                  <td>
+                    <ButtonClose onClick={() => deleteContact(id)}>
+                      &#10007;
+                    </ButtonClose>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </Table>
+        )}
+      </ContainerList>
+    </motion.div>
   );
 };

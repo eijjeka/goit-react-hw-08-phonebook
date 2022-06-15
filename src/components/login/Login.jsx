@@ -43,6 +43,7 @@ const Login = () => {
             type="email"
             value={email}
             placeholder="Enter email"
+            required
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -57,9 +58,10 @@ const Login = () => {
             type="password"
             value={password}
             placeholder="Password"
+            required
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="dark" type="submit">
           Submit
         </Button>
       </Form>

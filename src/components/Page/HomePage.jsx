@@ -1,4 +1,6 @@
 import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import authSelectors from "redux/auth/auth-selector";
 import Typed from "typed.js";
 import { motion } from "framer-motion";
 import Button from "react-bootstrap/Button";
@@ -6,6 +8,7 @@ import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const el = useRef(null);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   useEffect(() => {
     const typed = new Typed(el.current, {
@@ -31,23 +34,25 @@ const HomePage = () => {
       >
         <h1>Phonebook</h1>
       </motion.div>
-      <motion.div
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.9, delay: 7.2 }}
-      >
-        <Button
-          as={Link}
-          to="/register"
-          className="home-page__button"
-          variant="secondary"
+      {!isLoggedIn && (
+        <motion.div
+          initial={{ y: -40, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.9, delay: 7.2 }}
         >
-          Sign Up
-        </Button>
-        <Button as={Link} to="/login" variant="secondary">
-          Sign In
-        </Button>
-      </motion.div>
+          <Button
+            as={Link}
+            to="/register"
+            className="home-page__button"
+            variant="secondary"
+          >
+            Sign Up
+          </Button>
+          <Button as={Link} to="/login" variant="secondary">
+            Sign In
+          </Button>
+        </motion.div>
+      )}
     </>
   );
 };

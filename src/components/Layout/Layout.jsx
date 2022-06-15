@@ -6,6 +6,9 @@ import { Header } from "components/Layout/Header/Header";
 import { Footer } from "components/Layout/Footer/Footer";
 import { Outlet } from "react-router";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Layout = () => {
   const dispatch = useDispatch();
 
@@ -20,6 +23,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <ToastContainer />
     </>
   );
 };
