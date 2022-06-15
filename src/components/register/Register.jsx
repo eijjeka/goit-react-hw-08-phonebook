@@ -3,7 +3,14 @@ import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import authOperations from "redux/auth/auth-operations";
 import { useForm } from "react-hook-form";
-import { Form, Label, Input, Button, ErrorMessage } from "./Register.styled";
+import {
+  Form,
+  Label,
+  Input,
+  Button,
+  ErrorMessage,
+  ListError,
+} from "./Register.styled";
 
 export const Register = () => {
   const dispatch = useDispatch();
@@ -14,7 +21,7 @@ export const Register = () => {
     handleSubmit,
     reset,
   } = useForm({
-    mode: "onBlur",
+    mode: "onChange",
   });
 
   const onSubmit = (data) => {
@@ -37,7 +44,7 @@ export const Register = () => {
               required: "Name is required",
               minLength: {
                 value: 3,
-                message: "Please enter correct name (min 3 symbol)",
+                message: "Please enter correct name (min 3 letter)",
               },
             })}
           />
@@ -54,7 +61,7 @@ export const Register = () => {
               pattern: {
                 value:
                   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                message: "Please enter a valid email example@mail.com",
+                message: "Please enter a valid email «example@mail.com»",
               },
             })}
           />
@@ -70,21 +77,38 @@ export const Register = () => {
             type="password"
             {...register("password", {
               required: "Поле обязательное к заполнению",
-              minLength: {
-                value: 6,
-                message: "At least 6 characters long",
+              pattern: {
+                value:
+                  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{6,15}$/,
+                message: "",
               },
             })}
           />
         </Label>
         <ErrorMessage>
           {errors?.password && (
-            <ErrorMessage>{errors?.password?.message}</ErrorMessage>
+            <ErrorMessage>
+              <ListError>
+                <li>At least 6 characters long.</li>
+                <li>Contains at least 1 number.</li>
+                <li>Containsat least 1 lowercase letter.</li>
+                <li>Contains at least 1 uppercase letter.</li>
+                <li>Contains a special character(!@#$%^&* _= +-)</li>
+              </ListError>
+            </ErrorMessage>
           )}
         </ErrorMessage>
-        <Button type="submit" disabled={!isValid}>
-          Submit
-        </Button>
+        {isValid && (
+          <Button
+            type="submit"
+            as={motion.button}
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+          >
+            Submit
+          </Button>
+        )}
       </Form>
     </motion.div>
   );
