@@ -19,9 +19,7 @@ const register = createAsyncThunk("auth/register", async (credentials) => {
     const { data } = await axios.post("/users/signup", credentials);
     token.set(data.token);
     return data;
-  } catch (error) {
-    //   type error
-  }
+  } catch (error) {}
 });
 
 //LogIn User
@@ -31,9 +29,7 @@ const logIn = createAsyncThunk("auth/login", async (credentials) => {
     const { data } = await axios.post("/users/login", credentials);
     token.set(data.token);
     return data;
-  } catch (error) {
-    //   type error
-  }
+  } catch (error) {}
 });
 
 //LogOut User
