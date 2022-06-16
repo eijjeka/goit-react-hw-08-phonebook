@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Container from "../Container/Container";
+import Container from "components/Container";
 
 export const ContainerSearch = styled(Container)`
   width: 400px;
@@ -9,6 +9,9 @@ export const ContainerSearch = styled(Container)`
   color: #000;
   background-color: rgba(244, 244, 246, 0.4);
   box-shadow: 2px 2px 23px 9px rgba(0, 0, 0, 0.39);
+  @media screen and (max-width: 479px) {
+    max-width: 300px;
+  }
 `;
 
 export const Title = styled.h2`

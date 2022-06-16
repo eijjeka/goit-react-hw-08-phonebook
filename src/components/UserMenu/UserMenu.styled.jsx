@@ -3,6 +3,11 @@ import styled from "styled-components";
 export const UserContainer = styled.div`
   display: flex;
   align-items: center;
+  @media screen and (max-width: 991px) {
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const AvatarImg = styled.img`

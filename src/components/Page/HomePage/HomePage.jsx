@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import authSelectors from "redux/auth/auth-selector";
+import { Link } from "react-router-dom";
 import Typed from "typed.js";
 import { motion } from "framer-motion";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Wrapper, TextTyped, Title, Button } from "./HomePage.styled";
 
 const HomePage = () => {
   const el = useRef(null);
@@ -24,16 +24,16 @@ const HomePage = () => {
   }, []);
 
   return (
-    <>
-      <p className="home-text" ref={el}></p>
-      <motion.div
+    <Wrapper>
+      <TextTyped ref={el}></TextTyped>
+      <Title
+        as={motion.h1}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.9, delay: 6.5 }}
-        className="home-page__title"
       >
-        <h1>Phonebook</h1>
-      </motion.div>
+        Phonebook
+      </Title>
       {!isLoggedIn && (
         <motion.div
           initial={{ y: -40, opacity: 0 }}
@@ -53,7 +53,7 @@ const HomePage = () => {
           </Button>
         </motion.div>
       )}
-    </>
+    </Wrapper>
   );
 };
 

@@ -4,20 +4,19 @@ import {
   useDeleteContactMutation,
 } from "redux/contacts/contactsApi";
 import { getFilter } from "redux/contacts/contactsSlice";
+import Table from "react-bootstrap/Table";
+import { Loader } from "components/Loader/Loader";
 import {
   ContainerList,
   Title,
-  Wrapper,
-  Item,
   ButtonClose,
   TextList,
 } from "./ContactList.styled";
-import { TailSpin } from "react-loader-spinner";
-import Table from "react-bootstrap/Table";
 import { motion } from "framer-motion";
+import { MdOutlineDelete } from "react-icons/md";
 
-export const List = () => {
-  const { data, isFetching } = useGetContactsQuery();
+const List = () => {
+  const { data = [], isFetching } = useGetContactsQuery();
   const [deleteContact] = useDeleteContactMutation();
 
   const nameFilter = useSelector(getFilter);
@@ -35,14 +34,11 @@ export const List = () => {
     >
       <ContainerList>
         <Title>Contacts</Title>
-        {isFetching && (
-          <TailSpin color="#427ae4" ariaLabel="loading-indicator" />
-        )}
-        {data && (
+        {isFetching && <Loader />}
+        {data.length > 0 ? (
           <Table striped bordered hover variant="dark">
             <thead>
               <tr>
-                {/* <th>Favourites</th> */}
                 <th>Contact Name</th>
                 <th>Phone Number</th>
                 <th>Remove</th>
@@ -50,21 +46,24 @@ export const List = () => {
             </thead>
             <tbody>
               {contacts.map(({ id, name, number }, index) => (
-                <tr key={id}>
-                  {/* <td></td> */}
+                <tr key={id} className="text">
                   <td>{name}</td>
                   <td>{number}</td>
                   <td>
                     <ButtonClose onClick={() => deleteContact(id)}>
-                      &#10007;
+                      <MdOutlineDelete size={20} />
                     </ButtonClose>
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
+        ) : (
+          <TextList>No Contacts</TextList>
         )}
       </ContainerList>
     </motion.div>
   );
 };
+
+export default List;

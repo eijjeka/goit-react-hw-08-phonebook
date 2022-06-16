@@ -9,6 +9,7 @@ import { TailSpin } from "react-loader-spinner";
 import { motion } from "framer-motion";
 import "react-phone-number-input/style.css";
 import { FormContainer, BtnSubmit } from "./Form.styled";
+import { toast } from "react-toastify";
 
 const Form = () => {
   const [createContact, { isLoading }] = useCreateContactMutation();
@@ -30,7 +31,10 @@ const Form = () => {
 
     checkName === undefined
       ? createContact({ name, number })
-      : alert(`${name} is already in contacts.`);
+      : toast.error(`${name} is already in contacts.`, {
+          position: toast.POSITION.TOP_RIGHT,
+          theme: "dark",
+        });
 
     e.preventDefault();
     reset();

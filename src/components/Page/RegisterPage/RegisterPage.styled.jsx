@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 export const Title = styled.h2`
+  margin-top: 100px;
   text-align: center;
+  color: #fff;
 `;
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  /* border: 1px solid black; */
+  align-items: center;
   padding: 10px 20px;
 `;
 
@@ -16,6 +18,7 @@ export const Label = styled.label`
   flex-direction: column;
   margin-top: 9px;
   position: relative;
+  color: #fff;
 `;
 
 export const Input = styled.input`
@@ -47,15 +50,17 @@ export const Input = styled.input`
 export const Button = styled.button`
   display: inline-block;
   margin-top: 20px;
+  width: 200px;
   padding: 5px 5px;
   font-weight: 400;
   line-height: 1.5;
   text-transform: uppercase;
   cursor: pointer;
   color: #fff;
-  background-color: #212529;
-  border-color: #212529;
+  background-color: #262525;
+  border: none;
   border-radius: 20px;
+  box-shadow: 0 0 5px 2px rgba(148, 148, 148, 0.75);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
@@ -68,7 +73,7 @@ export const Button = styled.button`
 `;
 
 export const ErrorMessage = styled.div`
-  color: red;
+  color: #fff;
   font-size: 10px;
   margin-top: 4px;
   text-align: center;
@@ -78,5 +83,3 @@ export const ListError = styled.ul`
   padding: 0;
   list-style: none;
 `;
-
-export const Section = styled.section``;

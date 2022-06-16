@@ -20,11 +20,21 @@ const register = createAsyncThunk("auth/register", async (credentials) => {
     const { data } = await axios.post("/users/signup", credentials);
     token.set(data.token);
     return data;
-  } catch {
-    toast.error("You are already registered, please try to login", {
-      position: toast.POSITION.TOP_RIGHT,
-      theme: "dark",
-    });
+  } catch (error) {
+    const codeError = error.response.status;
+    if (codeError === 400) {
+      toast.error("You are already registered, please try to login", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "dark",
+      });
+    } else if (codeError === 500) {
+      toast.error("Oops... Server error! Please try later!", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "dark",
+      });
+    } else {
+      toast.error("Something went wrong!");
+    }
   }
 });
 
@@ -35,11 +45,14 @@ const logIn = createAsyncThunk("auth/login", async (credentials) => {
     const { data } = await axios.post("/users/login", credentials);
     token.set(data.token);
     return data;
-  } catch {
-    toast.error("Invalid address and/or password specified.", {
-      position: toast.POSITION.TOP_RIGHT,
-      theme: "dark",
-    });
+  } catch (error) {
+    const codeError = error.response.status;
+    if (codeError === 400) {
+      toast.error("Invalid address and/or password specified.", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "dark",
+      });
+    }
   }
 });
 
@@ -50,7 +63,15 @@ const logOut = createAsyncThunk("auth/logout", async (credentials) => {
     await axios.post("/users/logout", credentials);
     token.unset();
   } catch (error) {
-    //   type error
+    const codeError = error.response.status;
+    if (codeError === 500) {
+      toast.error("Oops... something happened to the server", {
+        position: toast.POSITION.TOP_RIGHT,
+        theme: "dark",
+      });
+    } else {
+      toast.error("Something went wrong!");
+    }
   }
 });
 
@@ -70,7 +91,10 @@ const fetchCurrentUser = createAsyncThunk(
     try {
       const { data } = await axios.get("users/current");
       return data;
-    } catch {}
+    } catch {
+      token.unset();
+      toast.warn("Authorization timed out! Please authenticate again!");
+    }
   }
 );
 

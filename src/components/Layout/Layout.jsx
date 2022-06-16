@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import authOperations from "redux/auth/auth-operations";
-
-import { Header } from "components/Layout/Header/Header";
-import { Footer } from "components/Layout/Footer/Footer";
 import { Outlet } from "react-router";
+
+import Header from "components/Layout/Header";
+import Footer from "components/Layout/Footer";
+import Main from "./Main/Main.styled";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,9 +20,9 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <main className="main">
+      <Main>
         <Outlet />
-      </main>
+      </Main>
       <Footer />
       <ToastContainer />
     </>

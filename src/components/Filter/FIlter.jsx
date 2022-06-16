@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ContainerSearch, Title, Input } from "./Filter.styled";
 import { filter, getFilter } from "redux/contacts/contactsSlice";
+import { ContainerSearch, Title, Input } from "./Filter.styled";
 import { motion } from "framer-motion";
 
 const Filter = () => {

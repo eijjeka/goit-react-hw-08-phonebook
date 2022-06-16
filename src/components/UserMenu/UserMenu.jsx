@@ -7,7 +7,7 @@ import {
   UserName,
   ButtonLogOut,
 } from "./UserMenu.styled";
-import defaultAvatar from "./avatar.png";
+import defaultAvatar from "components/images/avatar.png";
 
 export const UserMenu = () => {
   const userName = useSelector(authSelectors.getUsername);

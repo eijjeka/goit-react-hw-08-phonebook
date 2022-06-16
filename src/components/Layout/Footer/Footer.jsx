@@ -2,14 +2,14 @@ import { Navbar, Container, Nav } from "react-bootstrap";
 import { BsGithub, BsLinkedin } from "react-icons/bs";
 import { motion } from "framer-motion";
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.9 }}
     >
-      <Navbar fixed="bottom" bg="dark" variant="dark">
+      <Navbar bg="dark" variant="dark">
         <Container className=" justify-content-center">
           <Nav>
             <Nav.Item>
@@ -31,3 +31,5 @@ export const Footer = () => {
     </motion.div>
   );
 };
+
+export default Footer;
